@@ -1,9 +1,9 @@
 #!/bin/sh
-
+password=your_password_here
 sudo apt-get install git tmux
 git clone -b manyuser https://github.com/breakwa11/shadowsocks.git
 sudo ln -s $(readlink -f ./shadowsocks/shadowsocks) /usr/local/shadowsocks
-sed 's/"password".*/"password":"123",/g' shadowsocks/config.json > myconfig.json
+sed 's/"password".*/"password":"'$password'",/g' shadowsocks/config.json > myconfig.json
 sudo mv myconfig.json /etc/shadowsocks.json
 #https://github.com/breakwa11/shadowsocks-rss/wiki/System-startup-script
 cat > shadowsocks.service <<EOF
